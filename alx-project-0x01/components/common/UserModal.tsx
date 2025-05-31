@@ -29,22 +29,30 @@ const UserModal: React.FC<UserModalProps> = ({ onClose, onSubmit }) => {
   ) => {
     const { name, value } = e.target;
 
-    if (parentKey && nestedKey) {
+    if (parentKey === "address" && nestedKey === "geo") {
       setUser((prev) => ({
         ...prev,
-        [parentKey]: {
-          ...prev[parentKey],
-          [nestedKey]: {
-            ...prev[parentKey][nestedKey],
+        address: {
+          ...prev.address,
+          geo: {
+            ...prev.address.geo,
             [name]: value,
           },
         },
       }));
-    } else if (parentKey) {
+    } else if (parentKey === "address") {
       setUser((prev) => ({
         ...prev,
-        [parentKey]: {
-          ...prev[parentKey],
+        address: {
+          ...prev.address,
+          [name]: value,
+        },
+      }));
+    } else if (parentKey === "company") {
+      setUser((prev) => ({
+        ...prev,
+        company: {
+          ...prev.company,
           [name]: value,
         },
       }));

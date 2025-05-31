@@ -1,13 +1,6 @@
 // Create a new functional component
 import React from 'react';
-
-type UserProps = {
-  name: string;
-  email: string;
-  phone: string;
-  website: string;
-};
-
+import { UserProps } from "@/interfaces/UserProps";
 const UserCard: React.FC<{ user: UserProps }> = ({ user }) => {
   return (
     <div className="user-card">
